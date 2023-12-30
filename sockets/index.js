@@ -4,7 +4,6 @@ const socketRoutes = (httpServer) => {
     cors: {
       origin: "*",
       methods: ["GET", "POST"],
-      credentials: true,
     },
     transports: ["websocket", "polling"],
   });
