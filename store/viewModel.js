@@ -5,6 +5,7 @@ StoreViewModel.createViewModel = ({ body }) => {
     name: body?.name,
     price: body?.price,
     image: body?.image,
+    categoryList: body?.categoryList,
     stock: body?.stock || 1,
   };
 };

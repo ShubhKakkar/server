@@ -10,6 +10,11 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: [true, "Product image cannot be null"],
   },
+  categoryList: [
+    {
+      type: String,
+    }
+  ],
   stock: {
     type: Number,
     default: 1,

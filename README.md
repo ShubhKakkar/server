@@ -36,6 +36,7 @@ This is a simple grocery inventory management system with a backend (Node.js wit
                         "name": "Example Item",
                         "price": "Price of Product in Number",
                         "image": "Image URL of product",
+                        "categoryList": ["organic", "non-gmo", "vegan", ...otherCategories],
                         "stock": "Quantity of product in kgs"
                        }
         Response: {
