@@ -20,7 +20,14 @@ const app = express();
 
 app.use(express.json({limit: "5Mb"}));
 app.use(express.urlencoded({extended: true}));
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    preflightContinue: true, // Allow redirection in preflight requests
+  })
+);
 
 require('./utils/dbConnect')();
 
