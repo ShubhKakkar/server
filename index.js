@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const path = require("path");
+const cors = require("cors");
 
 // Routes
 const StoreRouter = require('./store/index');
@@ -18,6 +19,7 @@ const app = express();
 
 app.use(express.json({limit: "5Mb"}));
 app.use(express.urlencoded({extended: true}));
+app.use(cors());
 
 require('./utils/dbConnect')();
 
