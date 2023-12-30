@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const path = require("path");
 const cors = require("cors");
+const socketRoutes = require("./sockets");
 
 // Routes
 const StoreRouter = require('./store/index');
@@ -23,16 +24,23 @@ app.use(cors());
 
 require('./utils/dbConnect')();
 
-const server = http.createServer(app);
+const httpServer = http.createServer(app);
 
 app.get('/', (req, res) => {
     res.status(200).json({
         root: "ok",
     })
-})
+});
 
-app.use('/store', StoreRouter);
+const io = socketRoutes(httpServer);
 
-server.listen(PORT, () => {
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
+
+app.use("/store", StoreRouter);
+
+httpServer.listen(PORT, () => {
     console.log(`Server listening at port ${PORT}`);
 })

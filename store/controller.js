@@ -8,9 +8,10 @@ StoreController.createNewProduct = async (req) => {
       throw new Error("Incomplete information");
     }
     const createViewModel = StoreViewModel.createViewModel(req);
-    const newProduct = await StoreDbHelper.saveProduct(createViewModel);
+    const newProduct = await StoreDbHelper.saveProduct(req, createViewModel);
     return newProduct;
   } catch (err) {
+    console.log(err);
     return Promise.reject(err);
   }
 };
